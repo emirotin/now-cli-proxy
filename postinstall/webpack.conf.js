@@ -4,11 +4,27 @@ const webpack = require('webpack');
 module.exports = {
   target: 'node',
   entry: [
-    './postinstall.js'
+    './index.js'
   ],
   output: {
     path: path.join(__dirname, '../dist'),
     filename: 'postinstall.js'
+  },
+  module: {
+    loaders: [ {
+      test: /.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/,
+      query: {
+        plugins: [
+          'transform-async-to-generator',
+          'transform-runtime'
+        ],
+        presets: [
+          'es2015'
+        ]
+      }
+    } ]
   },
   plugins: [
     new webpack.DefinePlugin({
