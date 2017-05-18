@@ -1,12 +1,15 @@
 import { disableProgress,
-  enableProgress, showProgress } from './log.js';
+  enableProgress, info, showProgress } from './log.js';
 import fetch from 'node-fetch';
 import fs from 'fs';
 import path from 'path';
 import { plusx } from './chmod.js';
 
-(async function () {
-  let resp = await fetch('https://now-cli-latest.zeit.sh/');
+const latest = 'https://now-cli-latest.zeit.sh/';
+
+async function main () {
+  info(`Retrieving ${latest}...`);
+  let resp = await fetch(latest);
   if (resp.status !== 200) throw new Error(resp.statusText);
   const json = await resp.json();
   const asset = json.assets[2];
@@ -37,7 +40,9 @@ import { plusx } from './chmod.js';
   });
 
   await plusx(file);
-}()).catch((error) => {
+}
+
+main().catch((error) => {
   console.error(error);
   process.exit(2);
 });
