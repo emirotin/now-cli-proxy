@@ -1,12 +1,13 @@
 {
   "name": "now-bindist",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "bin": {
     "now": "dist/now"
   },
   "scripts": {
-    "postinstall": "node dist/postinstall.js",
+    "postinstall": "mkdir -p dist && touch dist/postinstall.js && node dist/postinstall.js",
+    "prepublish": "in-install || (npm run webpack && touch dist/now)",
     "webpack": "webpack --context postinstall --config postinstall/webpack.js"
   },
   "repository": {
@@ -20,13 +21,15 @@
   "bugs": {
     "url": "https://github.com/igorklopov/now-bindist/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-es2015": "6.24.1",
+    "in-publish": "2.0.0",
     "node-fetch": "1.6.3",
     "progress": "2.0.0",
     "webpack": "2.5.1"
