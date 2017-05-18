@@ -1,8 +1,10 @@
 {
   "name": "now-bindist",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "bin": "dist/now",
+  "bin": {
+    "now": "dist/now"
+  },
   "scripts": {
     "postinstall": "node dist/postinstall.js",
     "webpack": "webpack --context postinstall --config postinstall/webpack.js"
