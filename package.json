@@ -1,6 +1,6 @@
 {
   "name": "now-bindist",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "",
   "bin": {
     "now": "dist/now"
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/igorklopov/now-bindist.git"
+    "url": "git+https://github.com/zeit/now-bindist.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/igorklopov/now-bindist#readme",
+  "homepage": "https://github.com/zeit/now-bindist#readme",
   "bugs": {
-    "url": "https://github.com/igorklopov/now-bindist/issues"
+    "url": "https://github.com/zeit/now-bindist/issues"
   },
   "dependencies": {
   },
