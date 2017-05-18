@@ -1,13 +1,13 @@
 {
   "name": "now-bindist",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "bin": {
     "now": "dist/now"
   },
   "scripts": {
     "postinstall": "mkdir -p dist && touch dist/postinstall.js && node dist/postinstall.js",
-    "prepublish": "in-install || (npm run webpack && touch dist/now)",
+    "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now)",
     "webpack": "webpack --context postinstall --config postinstall/webpack.js"
   },
   "repository": {
