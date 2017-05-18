@@ -1,0 +1,21 @@
+{
+  "name": "now-bindist",
+  "version": "0.0.0",
+  "description": "",
+  "bin": "bin.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorklopov/now-bindist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/igorklopov/now-bindist#readme",
+  "bugs": {
+    "url": "https://github.com/igorklopov/now-bindist/issues"
+  },
+  "dependencies": {
+    "node-fetch": "1.6.3"
+  }
+}
