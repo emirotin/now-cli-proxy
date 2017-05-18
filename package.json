@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "bin": "bin.js",
-  "scripts": {},
+  "scripts": {
+    "webpack": "webpack --context postinstall --config postinstall/webpack.conf.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/igorklopov/now-bindist.git"
@@ -15,7 +17,9 @@
   "bugs": {
     "url": "https://github.com/igorklopov/now-bindist/issues"
   },
-  "dependencies": {
-    "node-fetch": "1.6.3"
+  "dependencies": {},
+  "devDependencies": {
+    "node-fetch": "1.6.3",
+    "webpack": "2.5.1"
   }
 }
