@@ -1,6 +1,6 @@
 {
   "name": "now-bindist",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "now-cli binary distribution package",
   "bin": {
     "now": "dist/now.exe",
