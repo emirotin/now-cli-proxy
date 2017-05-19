@@ -3,7 +3,8 @@
   "version": "0.3.0",
   "description": "now-cli binary distribution package",
   "bin": {
-    "now": "dist/now.exe"
+    "now": "dist/now.exe",
+    "now-update": "node dist/download.js"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
