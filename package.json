@@ -3,11 +3,11 @@
   "version": "0.2.0",
   "description": "",
   "bin": {
-    "now": "dist/now"
+    "now": "dist/now.exe"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
-    "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now)",
+    "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now.exe)",
     "webpack": "webpack --context download --config download/webpack.js"
   },
   "repository": {

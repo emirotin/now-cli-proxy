@@ -5,10 +5,12 @@ import fs from 'fs';
 import path from 'path';
 import { plusx } from './chmod.js';
 
+const target = 'now.exe';
 const latest = 'https://now-cli-latest.zeit.sh/';
 const platformToName = {
   darwin: 'now-macos',
-  linux: 'now-linux'
+  linux: 'now-linux',
+  win32: 'now-win.exe'
 };
 
 async function main () {
@@ -22,11 +24,10 @@ async function main () {
   info(url);
   resp = await fetch(url);
   const size = resp.headers.get('content-length');
-  const file = path.join(__dirname, 'now');
+  const file = path.join(__dirname, target);
   const ws = fs.createWriteStream(file);
 
-  const short = `Downloading '${name}'`;
-  enableProgress(short);
+  enableProgress(`Downloading '${name}'`);
   showProgress(0);
   await new Promise((resolve, reject) => {
     let bytesRead = 0;
