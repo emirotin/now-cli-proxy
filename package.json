@@ -6,9 +6,9 @@
     "now": "dist/now"
   },
   "scripts": {
-    "postinstall": "mkdir -p dist && touch dist/postinstall.js && node dist/postinstall.js",
+    "postinstall": "mkdir -p dist && touch dist/download.js && node dist/download.js",
     "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now)",
-    "webpack": "webpack --context postinstall --config postinstall/webpack.js"
+    "webpack": "webpack --context download --config download/webpack.js"
   },
   "repository": {
     "type": "git",
