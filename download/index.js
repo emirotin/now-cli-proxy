@@ -12,13 +12,14 @@ const platformToName = {
 };
 
 async function main () {
-  info(`Retrieving ${latest}...`);
+  info('Retrieving the list of binaries');
   let resp = await fetch(latest);
   if (resp.status !== 200) throw new Error(resp.statusText);
   const json = await resp.json();
   const name = platformToName[process.platform];
   const asset = json.assets.filter((a) => a.name === name)[0];
   const { url } = asset;
+  info(url);
   resp = await fetch(url);
   const size = resp.headers.get('content-length');
   const file = path.join(__dirname, 'now');

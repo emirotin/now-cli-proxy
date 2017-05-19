@@ -6,7 +6,7 @@
     "now": "dist/now"
   },
   "scripts": {
-    "postinstall": "mkdir -p dist && touch dist/download.js && node dist/download.js",
+    "postinstall": "node postinstall.js",
     "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now)",
     "webpack": "webpack --context download --config download/webpack.js"
   },
