@@ -26,6 +26,13 @@ const details = {
 }
 
 async function main () {
+  if (process.platform !== 'win32') {
+    fs.writeFileSync(target,
+      '#!/usr/bin/env node\n' +
+      'console.log("\'Now\' binary downloading was interrupted. Please reinstall!")\n'
+    )
+  }
+
   const { binary, platform } = details[process.platform]
   const url = `https://github.com/zeit/now-cli/releases/download/${nowVersion}/${binary}`
 
