@@ -1,4 +1,4 @@
-import { disableProgress, enableProgress, info, showProgress } from './log.js'
+import { disableProgress, enableProgress, showProgress } from './log.js'
 import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
@@ -14,17 +14,31 @@ const platformToName = {
   win32: 'now-win.exe'
 }
 
-async function main () {
-  const name = platformToName[process.platform]
-  const url = `https://github.com/zeit/now-cli/releases/download/${version}/${name}`
-  info(url)
+const names = {
+  darwin: {
+    platform: 'macOS',
+    binary: 'now-macos'
+  },
+  linux: {
+    platform: 'Linux',
+    binary: 'now-linux'
+  },
+  win32: {
+    platform: 'Window',
+    binary: 'now-win.exe'
+  }
+}
+
+async function main() {
+  const nameDetails = names[process.platform]
+  const url = `https://github.com/zeit/now-cli/releases/download/${version}/${nameDetails.binary}`
 
   const resp = await fetch(url)
   const size = resp.headers.get('content-length')
   const file = path.join(__dirname, target)
   const ws = fs.createWriteStream(file)
 
-  enableProgress(`Downloading '${name}'`)
+  enableProgress('Downloading `now` for ' + nameDetails.platform)
   showProgress(0)
 
   await new Promise((resolve, reject) => {
