@@ -1,6 +1,8 @@
 # The proxy for Now CLI
 
-This is a special kind of `npm` package. When you install it using `npm install -g now`, it will automatically select the latest version of the [pkg](https://github.com/zeit/pkg)-ed `now` binary from [here](https://github.com/zeit/now-cli/releases) and place it on your device. 
+If you're looking for the source code of `now`, you need to look [here](https://github.com/zeit/now-cli).
+
+This is a special kind of package. When you install it using `npm install -g now`, it will automatically select the latest version of the [pkg](https://github.com/zeit/pkg)-ed `now` binary from [here](https://github.com/zeit/now-cli/releases) and place it on your device. 
 
 The reason why this exists is because we want to distribute the [pkg](https://github.com/zeit/pkg)-ed version of the `now` command line interface everywhere: Via [Now Desktop](https://github.com/zeit/now-desktop), on [npm](https://www.npmjs.com) (which would otherwise install the source code of the project and run it using [Node.js](https://nodejs.org)). This not only allows us to ship `now` with the [Node.js](https://nodejs.org) version of our choice (which means that it will also run on devices with a very old instance of [Node.js](https://nodejs.org) on them), but it also leads to `now` running much faster because bytecode is being executed instead of the source code getting parsed and run.
 
