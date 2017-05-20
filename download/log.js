@@ -3,10 +3,6 @@ import assert from 'assert'
 
 let bar
 
-export function info (text) {
-  console.log(`> ${text}`)
-}
-
 export function enableProgress (text) {
   assert(!bar)
   // text += ' '.repeat(28 - text.length);
