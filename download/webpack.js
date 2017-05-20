@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   target: 'node',
@@ -38,4 +38,4 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin()
   ]
-};
+}
