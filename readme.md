@@ -1,5 +1,8 @@
 # now CLI - npm proxy
 
+[![Build Status](https://travis-ci.org/zeit/now-cli-proxy.svg?branch=master)](https://travis-ci.org/zeit/now-cli-proxy)
+[![Slack Channel](http://zeit-slackin.now.sh/badge.svg)](https://zeit.chat)
+
 If you're looking for the source code of `now`, you need to look [here](https://github.com/zeit/now-cli).
 
 This is a special kind of package. When you install it using `npm install -g now`, it will automatically select the latest version of the [pkg](https://github.com/zeit/pkg)-ed `now` binary from [here](https://github.com/zeit/now-cli/releases) and place it on your device.
