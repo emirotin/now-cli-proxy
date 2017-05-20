@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-export function plusxSync (file) {
+export default function (file) {
   const s = fs.statSync(file)
   const newMode = s.mode | 64 | 8 | 1
   if (s.mode === newMode) return

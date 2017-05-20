@@ -1,11 +1,12 @@
-import Progress from 'progress'
+// Packages
 import assert from 'assert'
+import Progress from 'progress'
 
 let bar
 
 export function enableProgress (text) {
   assert(!bar)
-  // text += ' '.repeat(28 - text.length);
+  // OLD: text += ' '.repeat(28 - text.length);
   bar = new Progress(`> ${text} [:bar] :percent`, {
     stream: process.stdout,
     width: 20,
@@ -23,7 +24,7 @@ export function showProgress (percentage) {
 export function disableProgress () {
   assert(bar)
 
-  // it is auto-completed once it updates to 100
+  // It is auto-completed once it updates to 100
   // otherwise it outputs a blank line
   if (!bar.complete) {
     bar.update(1)

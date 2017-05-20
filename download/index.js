@@ -1,8 +1,13 @@
-import { disableProgress, enableProgress, showProgress } from './log.js'
-import fetch from 'node-fetch'
+// Native
 import fs from 'fs'
 import path from 'path'
-import { plusxSync } from './chmod.js'
+
+// Packages
+import fetch from 'node-fetch'
+
+// Utilities
+import plusxSync from './chmod'
+import { disableProgress, enableProgress, showProgress } from './log'
 
 const target = path.join(__dirname, 'now.exe')
 const partial = target + '.partial'
@@ -67,7 +72,9 @@ async function main () {
   plusxSync(target)
 }
 
-main().catch(error => {
-  console.error(error)
+main().catch(err => {
+  console.error(err)
+
+  // eslint-disable-next-line unicorn/no-process-exit
   process.exit(2)
 })
