@@ -10,7 +10,7 @@ const packageJsonPath = path.join(__dirname, '../package.json')
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
 const nowVersion = packageJson.versionOverride || packageJson.version
 
-const names = {
+const details = {
   darwin: {
     platform: 'macOS',
     binary: 'now-macos'
@@ -26,10 +26,10 @@ const names = {
 }
 
 async function main () {
-  const nameDetails = names[process.platform]
-  const url = `https://github.com/zeit/now-cli/releases/download/${nowVersion}/${nameDetails.binary}`
+  const { binary, platform } = details[process.platform]
+  const url = `https://github.com/zeit/now-cli/releases/download/${nowVersion}/${binary}`
 
-  enableProgress('Downloading `now` for ' + nameDetails.platform)
+  enableProgress('Downloading `now` for ' + platform)
   showProgress(0)
 
   const resp = await fetch(url)
