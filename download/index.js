@@ -7,7 +7,6 @@ import { plusx } from './chmod.js'
 const target = 'now.exe'
 const packageJson = path.join(__dirname, '../package.json')
 const { version } = JSON.parse(fs.readFileSync(packageJson, 'utf8'))
-const github = `https://api.github.com/repos/zeit/now-cli/releases/tags/${version}`
 
 const platformToName = {
   darwin: 'now-macos',
@@ -16,20 +15,11 @@ const platformToName = {
 }
 
 async function main () {
-  info('Retrieving the list of releases')
-  let resp = await fetch(github)
-
-  if (resp.status !== 200) throw new Error(resp.statusText + ' ' + github)
-
-  const json = await resp.json()
   const name = platformToName[process.platform]
-  const asset = json.assets.filter((a) => a.name === name)[0]
+  const url = `https://github.com/zeit/now-cli/releases/download/${version}/${name}`
+  info(url)
 
-  const { browser_download_url } = asset
-  info(browser_download_url)
-
-  resp = await fetch(browser_download_url)
-
+  const resp = await fetch(url)
   const size = resp.headers.get('content-length')
   const file = path.join(__dirname, target)
   const ws = fs.createWriteStream(file)
