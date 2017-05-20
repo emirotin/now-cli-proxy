@@ -10,7 +10,8 @@
   "scripts": {
     "postinstall": "node postinstall.js",
     "swap-readme": "mv readme.md temp-readme.md && mv proxy-readme.md readme.md",
-    "publish": "mv readme.md proxy-readme.md && mv temp-readme.md readme.md",
+    "swap-readme-back": "mv readme.md proxy-readme.md && mv temp-readme.md readme.md",
+    "publish": "npm run swap-readme-back",
     "prepublish": "in-install || (npm run webpack && cp /dev/null dist/now.exe) && npm run swap-readme",
     "webpack": "webpack --context download --config download/webpack.js"
   },
