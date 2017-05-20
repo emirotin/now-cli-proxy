@@ -16,7 +16,7 @@
     "swap-readme": "mv readme.md readme-back.md && mv readme-for-npm.md readme.md",
     "swap-readme-back": "mv readme.md readme-for-npm.md && mv readme-back.md readme.md",
     "publish": "npm run swap-readme-back",
-    "prepublish": "in-install || (npm run webpack && node placeholder.js && npm run swap-readme)",
+    "prepublishOnly": "npm run webpack && node placeholder.js && npm run swap-readme",
     "webpack": "webpack --context download --config download/webpack.js",
     "test": "echo 'Tests are coming!'"
   },
@@ -32,7 +32,6 @@
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-es2015": "6.24.1",
-    "in-publish": "2.0.0",
     "node-fetch": "1.6.3",
     "progress": "2.0.0",
     "webpack": "2.5.1"
