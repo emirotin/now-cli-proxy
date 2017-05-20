@@ -2,17 +2,12 @@ import { disableProgress, enableProgress, showProgress } from './log.js'
 import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
-import { plusx } from './chmod.js'
+import { plusxSync } from './chmod.js'
 
-const target = 'now.exe'
+const target = path.join(__dirname, 'now.exe')
+const partial = target + '.partial'
 const packageJson = path.join(__dirname, '../package.json')
 const { version } = JSON.parse(fs.readFileSync(packageJson, 'utf8'))
-
-const platformToName = {
-  darwin: 'now-macos',
-  linux: 'now-linux',
-  win32: 'now-win.exe'
-}
 
 const names = {
   darwin: {
@@ -29,17 +24,16 @@ const names = {
   }
 }
 
-async function main() {
+async function main () {
   const nameDetails = names[process.platform]
   const url = `https://github.com/zeit/now-cli/releases/download/${version}/${nameDetails.binary}`
 
-  const resp = await fetch(url)
-  const size = resp.headers.get('content-length')
-  const file = path.join(__dirname, target)
-  const ws = fs.createWriteStream(file)
-
   enableProgress('Downloading `now` for ' + nameDetails.platform)
   showProgress(0)
+
+  const resp = await fetch(url)
+  const size = resp.headers.get('content-length')
+  const ws = fs.createWriteStream(partial)
 
   await new Promise((resolve, reject) => {
     let bytesRead = 0
@@ -61,7 +55,8 @@ async function main() {
     })
   })
 
-  await plusx(file)
+  fs.renameSync(partial, target)
+  plusxSync(target)
 }
 
 main().catch(error => {
