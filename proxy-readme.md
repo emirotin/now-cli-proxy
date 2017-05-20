@@ -12,7 +12,7 @@ now help
 
 ## Caught a Bug?
 
-Read more about contributing to `now` [this guide](https://github.com/zeit/now-cli#readme).
+Read more about contributing to `now` in [this guide](https://github.com/zeit/now-cli#readme).
 
 ## Authors
 
