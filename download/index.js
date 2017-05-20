@@ -3,9 +3,10 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 import { plusx } from './chmod.js'
-import { version } from '../package.json'
 
 const target = 'now.exe'
+const packageJson = path.join(__dirname, '../package.json')
+const { version } = JSON.parse(fs.readFileSync(packageJson, 'utf8'))
 const github = `https://api.github.com/repos/zeit/now-cli/releases/tags/${version}`
 
 const platformToName = {
