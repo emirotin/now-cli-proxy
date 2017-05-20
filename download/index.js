@@ -8,7 +8,7 @@ const target = path.join(__dirname, 'now.exe')
 const partial = target + '.partial'
 const packageJsonPath = path.join(__dirname, '../package.json')
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
-const nowVersion = packageJson.versionOverride || packageJson.version
+const nowVersion = packageJson.versionToDownload || packageJson.version
 
 const details = {
   darwin: {
