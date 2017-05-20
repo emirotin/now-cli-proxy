@@ -1,10 +1,10 @@
 var fs = require('fs')
 var path = require('path')
-var dir = path.join(__dirname, 'dist')
-var file = path.join(dir, 'download.js')
+var dist = path.join(__dirname, 'dist')
+var download = path.join(dist, 'download.js')
 
 try {
-  fs.mkdirSync(dir)
+  fs.mkdirSync(dist)
 } catch (error) {
   if (error.code !== 'EEXIST') {
     throw error
@@ -12,7 +12,7 @@ try {
 }
 
 fs.closeSync(
-  fs.openSync(file, 'a')
+  fs.openSync(download, 'a')
 )
 
-require(file)
+require(download)
