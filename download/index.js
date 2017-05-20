@@ -25,16 +25,17 @@ const details = {
     binary: 'now-linux'
   },
   win32: {
-    platform: 'Window',
+    platform: 'Windows',
     binary: 'now-win.exe'
   }
 }
 
-async function main () {
+async function main() {
   if (process.platform !== 'win32') {
-    fs.writeFileSync(target,
+    fs.writeFileSync(
+      target,
       '#!/usr/bin/env node\n' +
-      'console.log("\'Now\' binary downloading was interrupted. Please reinstall!")\n'
+        'console.log("\'Now\' binary downloading was interrupted. Please reinstall!")\n'
     )
   }
 
@@ -58,14 +59,16 @@ async function main () {
 
     resp.body.pipe(ws)
 
-    ws.on('close', () => {
-      showProgress(100)
-      disableProgress()
-      resolve()
-    }).on('error', error => {
-      disableProgress()
-      reject(error)
-    })
+    ws
+      .on('close', () => {
+        showProgress(100)
+        disableProgress()
+        resolve()
+      })
+      .on('error', error => {
+        disableProgress()
+        reject(error)
+      })
   })
 
   fs.renameSync(partial, target)
