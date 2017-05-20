@@ -6,8 +6,9 @@ import { plusxSync } from './chmod.js'
 
 const target = path.join(__dirname, 'now.exe')
 const partial = target + '.partial'
-const packageJson = path.join(__dirname, '../package.json')
-const { version } = JSON.parse(fs.readFileSync(packageJson, 'utf8'))
+const packageJsonPath = path.join(__dirname, '../package.json')
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'))
+const nowVersion = packageJson.versionOverride || packageJson.version
 
 const names = {
   darwin: {
@@ -26,7 +27,7 @@ const names = {
 
 async function main () {
   const nameDetails = names[process.platform]
-  const url = `https://github.com/zeit/now-cli/releases/download/${version}/${nameDetails.binary}`
+  const url = `https://github.com/zeit/now-cli/releases/download/${nowVersion}/${nameDetails.binary}`
 
   enableProgress('Downloading `now` for ' + nameDetails.platform)
   showProgress(0)
