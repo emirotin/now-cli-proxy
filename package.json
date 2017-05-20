@@ -7,6 +7,10 @@
   "bin": {
     "now": "dist/now.exe"
   },
+  "files": [
+    "dist",
+    "postinstall.js"
+  ],
   "scripts": {
     "postinstall": "node postinstall.js",
     "swap-readme": "mv readme.md temp-readme.md && mv proxy-readme.md readme.md",
