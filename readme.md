@@ -1,4 +1,4 @@
-# The proxy for Now CLI
+# now CLI - npm proxy
 
 If you're looking for the source code of `now`, you need to look [here](https://github.com/zeit/now-cli).
 
