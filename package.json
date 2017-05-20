@@ -5,8 +5,7 @@
   "repository": "zeit/now-cli",
   "license": "MIT",
   "bin": {
-    "now": "dist/now.exe",
-    "now-update": "update.js"
+    "now": "dist/now.exe"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
