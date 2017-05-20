@@ -3,9 +3,10 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 import { plusx } from './chmod.js'
+import { version } from '../package.json'
 
 const target = 'now.exe'
-const latest = 'https://now-cli-latest.zeit.sh'
+const github = `https://api.github.com/repos/zeit/now-cli/releases/tags/${version}`
 
 const platformToName = {
   darwin: 'now-macos',
@@ -14,19 +15,19 @@ const platformToName = {
 }
 
 async function main () {
-  info('Retrieving the list of binaries')
-  let resp = await fetch(latest)
+  info('Retrieving the list of releases')
+  let resp = await fetch(github)
 
-  if (resp.status !== 200) throw new Error(resp.statusText)
+  if (resp.status !== 200) throw new Error(resp.statusText + ' ' + github)
 
   const json = await resp.json()
   const name = platformToName[process.platform]
   const asset = json.assets.filter((a) => a.name === name)[0]
 
-  const { url } = asset
-  info(url)
+  const { browser_download_url } = asset
+  info(browser_download_url)
 
-  resp = await fetch(url)
+  resp = await fetch(browser_download_url)
 
   const size = resp.headers.get('content-length')
   const file = path.join(__dirname, target)
